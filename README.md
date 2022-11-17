@@ -1,3 +1,6 @@
+# Fork Reason: 
+To fix HTTP requests stuck on "....." (however HTTPS requests may no longer work)
+
 # Fetch for Arduino
 fetch is a high level HTTP Request Library that gives you a javascript fetch like API. It also supports making asynchronous/non-blocking requests, check out [this example](https://github.com/instanceofMA/arduino-fetch/blob/main/examples/esp8266/async/get/get.ino) and [others](https://github.com/instanceofMA/arduino-fetch/blob/main/examples).
 
