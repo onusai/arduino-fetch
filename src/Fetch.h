@@ -7,7 +7,12 @@
 
 #ifndef FETCH_H_
 #define FETCH_H_
-
+enum ConnectionStatus {
+    IDLE,
+    CONNECTING,
+    CONNECTED,
+    ERROR
+};
 class Body {
     private:
         String _text;
@@ -83,11 +88,15 @@ typedef void (*OnResponseCallback)(Response response);
 
 class FetchClient {
     private:
-        WiFiClientSecure _client;
+        int _connectRetries;
+        ConnectionStatus _connectionStatus;
+        WiFiClient _client;
         OnResponseCallback _OnResponseCallback;
+        Url _url;
+        RequestOptions _requestOptions;
     public:
         FetchClient();
-        FetchClient(WiFiClientSecure& client, OnResponseCallback callback);
+        FetchClient(WiFiClient& client, OnResponseCallback callback, ConnectionStatus connectionStatus, Url url, RequestOptions options);
         void loop();
 };
 
